@@ -1,0 +1,56 @@
+name: noobcode_flutter_chatapp
+description: NoobCode Flutter Chat App
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  supabase_flutter: ^1.10.9
+  flutter_dotenv: ^5.1.0
+  get: ^4.6.5
+  get_it: ^7.6.0
+  shared_preferences: ^2.2.0
+  provider: ^6.0.5
+  chat_bubbles: ^1.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/icons/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path_android: "assets/icons/logo.png"
+  image_path_ios: "assets/icons/logo.png"
+  adaptive_icon_background: "assets/icons/logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icons/logo.png"
+    background_color: "#00FFFFFF"
+    theme_color: "#FFFFFF"
+  windows:
+    generate: true
+    image_path: "assets/icons/logo.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icons/logo.png"
