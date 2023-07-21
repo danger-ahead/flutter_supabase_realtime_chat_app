@@ -33,6 +33,7 @@ class HomeViewModel extends BaseModel {
     // save new username
     if (dialogResponse.confirmed == true) {
       _localStorageService.username = dialogResponse.value1;
+      _username = dialogResponse.value1;
     }
 
     _chatId = dialogResponse.value2 ?? "0";
@@ -125,9 +126,14 @@ class HomeViewModel extends BaseModel {
     final dialogResponse = await _dialogService.showConfirmationDialog(
         title: "Reset session?",
         description:
-            "Conversations are not stored in the cloud or on your device and you will not be able to view them again. In addition, you will not be able to use your previous username with this Chat ID for the next 5 minutes.");
+            "You will be logged out of this session. Conversations are not stored in the cloud or on your device and you will not be able to view them again.");
+
     if (dialogResponse.confirmed == true) {
       _chats.clear();
+
+      final supabase = Supabase.instance.client;
+
+      await supabase.removeAllChannels();
 
       await getDataFromModal();
 
